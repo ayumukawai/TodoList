@@ -27,6 +27,9 @@ function TodoIndexPage() {
           <div key={x.id}>{x.isComplete ? "済" : "未"}</div>
         </>
       ))}
+      <button>編集</button>
+      <button>削除</button>
+      <button>追加</button>
     </>
   );
 }
