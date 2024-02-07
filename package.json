@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "next": "14.1.0",
-    "node-win-x64": "^18.18.2",
     "react": "^18",
     "react-dom": "^18",
     "swr": "^2.2.4"
