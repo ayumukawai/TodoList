@@ -1,7 +1,7 @@
 import React from "react";
 
-const AddPage = () => {
-  return <div>AddPage</div>;
+const TodoAddPage = () => {
+  return <div>TodoAddPage</div>;
 };
 
-export default AddPage;
+export default TodoAddPage;

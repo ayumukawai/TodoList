@@ -4,7 +4,7 @@ import { fetcher } from "@/utils/api";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
 
-const EditPage = () => {
+const TodoEditPage = () => {
   const params = useParams<{id: string}>();
   const { data, error } = useSWR<Todo>(
     `http://localhost:5088/api/todoitems/${params.id}`,
@@ -24,5 +24,5 @@ const EditPage = () => {
   );
 };
 
-export default EditPage;
+export default TodoEditPage;
 
