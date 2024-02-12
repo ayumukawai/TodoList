@@ -13,7 +13,7 @@ npm run dev
 ビルドに成功したら、以下のURLにアクセスすることで確認できます。
 
 ```URL
-http://localhost:3000
+http://localhost:3000/todo
 ```
 ### 特徴
 ・ルーティングには App Router を使用しています。<br>
