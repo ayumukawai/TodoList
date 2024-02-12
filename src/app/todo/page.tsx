@@ -5,10 +5,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 
 function TodoIndexPage() {
-  const { data, error } = useSWR<Todo[]>(
-    'http://localhost:5088/api/todoitems',
-    fetcher
-  );
+  const { data, error } = useSWR<Todo[]>('/api/todo', fetcher);
 
   if (error) return <div>{error.message}</div>;
 

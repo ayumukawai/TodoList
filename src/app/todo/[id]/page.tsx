@@ -6,10 +6,7 @@ import useSWR from 'swr';
 
 const TodoEditPage = () => {
   const params = useParams<{ id: string }>();
-  const { data, error } = useSWR<Todo>(
-    `http://localhost:5088/api/todoitems/${params.id}`,
-    fetcher
-  );
+  const { data, error } = useSWR<Todo>(`/api/todo/${params.id}`, fetcher);
 
   if (error) return <div>{error.message}</div>;
 
@@ -17,7 +14,7 @@ const TodoEditPage = () => {
 
   return (
     <>
-      <div>TodoId:{params.id}</div>
+      <div>TodoId:{data.id}</div>
       <div>TodoContent:{data.name}</div>
       <div>TodoContent:{data.isComplete ? '済' : '未'}</div>
     </>
