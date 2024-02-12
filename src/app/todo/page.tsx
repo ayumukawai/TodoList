@@ -15,8 +15,9 @@ function TodoIndexPage() {
     <>
       {data.map((x) => (
         <>
-          <div key={x.id}>{x.name}</div>
-          <div key={x.id}>{x.isComplete ? '済' : '未'}</div>
+          <div key={x.id}>TodoId:{x.id}</div>
+          <div key={x.id}>Todo名:{x.name}</div>
+          <div key={x.id}>終わったかどうか:{x.isComplete ? '済' : '未'}</div>
           <Link href={`/todo/${x.id}`}>
             <button>編集</button>
           </Link>

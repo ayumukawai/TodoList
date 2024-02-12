@@ -9,3 +9,5 @@ export async function GET(
   const res = await fetch(url).then((res) => res.json());
   return Response.json(res);
 }
+
+export async function PUT(req: NextRequest) {}
