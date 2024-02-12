@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   req: NextRequest,
@@ -10,4 +10,36 @@ export async function GET(
   return Response.json(res);
 }
 
-export async function PUT(req: NextRequest) {}
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } },
+) {
+  const id = params.id;
+  const body = await req.json();
+  await fetch(`http://localhost:5088/api/todoitems/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  }).then((res) => {
+    if (res.status === 204) return;
+  });
+  return new NextResponse(null, { status: 204 });
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } },
+) {
+  const id = params.id;
+  await fetch(`http://localhost:5088/api/todoitems/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => {
+    if (res.status === 204) return;
+  });
+  return new NextResponse(null, { status: 204 });
+}

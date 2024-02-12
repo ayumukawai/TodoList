@@ -1,11 +1,17 @@
 'use client';
 import { Todo } from '@/types/Todo';
-import { fetcher } from '@/utils/api';
+import { DeleteRequest, GetRequest } from '@/utils/api';
 import Link from 'next/link';
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
+
+const DeleteButton = ({ id }: { id: number }) => {
+  const { trigger } = useSWRMutation(`/api/todo/${id}`, DeleteRequest);
+  return <button onClick={() => trigger()}>削除</button>;
+};
 
 function TodoIndexPage() {
-  const { data, error } = useSWR<Todo[]>('/api/todo', fetcher);
+  const { data, error } = useSWR<Todo[]>('/api/todo', GetRequest);
 
   if (error) return <div>{error.message}</div>;
 
@@ -21,7 +27,7 @@ function TodoIndexPage() {
           <Link href={`/todo/${x.id}`}>
             <button>編集</button>
           </Link>
-          <button>削除</button>
+          <DeleteButton id={x.id} />
         </>
       ))}
       <Link href="/todo/add">
