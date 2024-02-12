@@ -15,3 +15,7 @@ npm run dev
 ```URL
 http://localhost:3000
 ```
+### 特徴
+・ルーティングには App Router を使用しています。
+・APIハンドリングには Route Handlers を使用しています。
+・データフェッチには SWR を使用しています。
