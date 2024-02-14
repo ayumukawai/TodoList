@@ -1,0 +1,20 @@
+.row {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.todo {
+  text-align: left;
+}
+
+.edit_button {
+  background-color: #00a95f;
+  margin-right: 10px;
+}
+
+.delete_button {
+  background-color: #ea5532;
+}

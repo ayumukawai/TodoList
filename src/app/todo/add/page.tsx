@@ -1,4 +1,5 @@
 'use client';
+import styles from '@/styles/TodoAddPage.module.scss';
 import { PostRequest } from '@/utils/api';
 import { useState } from 'react';
 import useSWRMutation from 'swr/mutation';
@@ -37,8 +38,9 @@ const TodoAddPage = () => {
         onClick={() => {
           trigger({ id: 0, name, isComplete });
         }}
+        className={`${styles.add_button} button`}
       >
-        Add Data
+        追加
       </button>
     </>
   );

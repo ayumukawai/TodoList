@@ -1,39 +1,26 @@
 'use client';
-import { Todo } from '@/types/Todo';
-import { DeleteRequest, GetRequest } from '@/utils/api';
+import Todo from '@/app/components/Todo';
+import styles from '@/styles/TodoIndexPage.module.scss';
+import { GetRequest } from '@/utils/api';
 import Link from 'next/link';
 import useSWR from 'swr';
-import useSWRMutation from 'swr/mutation';
-
-const DeleteButton = ({ id }: { id: number }) => {
-  const { trigger } = useSWRMutation(`/api/todo/${id}`, DeleteRequest);
-  return <button onClick={() => trigger()}>削除</button>;
-};
 
 function TodoIndexPage() {
-  const { data, error } = useSWR<Todo[]>('/api/todo', GetRequest);
+  const { data: todoData, error } = useSWR<Todo[]>('/api/todo', GetRequest);
 
   if (error) return <div>{error.message}</div>;
 
-  if (!data) return <div>Loading</div>;
+  if (!todoData) return <div>Loading</div>;
 
   return (
-    <>
-      {data.map((x) => (
-        <>
-          <div key={x.id}>TodoId:{x.id}</div>
-          <div key={x.id}>Todo名:{x.name}</div>
-          <div key={x.id}>終わったかどうか:{x.isComplete ? '済' : '未'}</div>
-          <Link href={`/todo/${x.id}`}>
-            <button>編集</button>
-          </Link>
-          <DeleteButton id={x.id} />
-        </>
+    <div className={styles.container}>
+      {todoData.map((todo) => (
+        <Todo key={todo.id} todo={todo} url={`/todo/${todo.id}`} />
       ))}
-      <Link href="/todo/add">
-        <button>追加</button>
+      <Link href="/todo/add" className={styles.link}>
+        <button className={`${styles.add_button} button`}>追加</button>
       </Link>
-    </>
+    </div>
   );
 }
 
