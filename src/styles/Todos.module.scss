@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  text-align: right;
+  flex-wrap: wrap;
+  padding: 20px 50px;
 }
 
 .link {
