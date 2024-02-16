@@ -1,12 +1,15 @@
 .container {
   display: flex;
-  flex-direction: column;
   text-align: right;
 }
 
 .link {
   width: 350px;
   padding: 20px;
+}
+
+.button_row {
+  text-align: right;
 }
 
 .add_button {
